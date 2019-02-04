@@ -12,7 +12,7 @@ const productRoutes = require("./routes/product");
 const reviewRoutes = require("./routes/review");
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/sarahshop", {
-  useMongoClient: true
+  useNewUrlParser: true
 });
 
 const Product = require("./models/product");
