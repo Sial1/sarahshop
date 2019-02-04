@@ -10,7 +10,10 @@ const categoryRoutes = require("./routes/category");
 
 const productRoutes = require("./routes/product");
 const reviewRoutes = require("./routes/review");
-mongoose.connect("mongodb://localhost/onlineShop", { useNewUrlParser: true });
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/sarahshop", {
+  useMongoClient: true
+});
 
 const Product = require("./models/product");
 const Department = require("./models/department");
@@ -22,7 +25,7 @@ app.use(categoryRoutes);
 app.use(productRoutes);
 app.use(reviewRoutes);
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("Server started");
 });
 
